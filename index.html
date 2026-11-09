@@ -6,91 +6,335 @@
     <title>Oratile Saane | Aspiring Backend Developer</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
-            --border: #334155;
+            --bg-main: #0a0a0a;          /* Deep Black */
+            --bg-card: #141414;          /* Dark Charcoal Gray */
+            --bg-card-hover: #1f1f1f;    /* Lighter Gray for hover */
+            --border-color: #2a2a2a;     /* Muted Gray Border */
+            
+            --gold-primary: #d4af37;     /* Classic Metallic Gold */
+            --gold-accent: #f3e5ab;      /* Soft Light Gold */
+            --gold-muted: #997a15;       /* Muted Gold Accent */
+
+            --text-main: #f4f4f5;        /* Crisp Off-White */
+            --text-muted: #a1a1aa;       /* Medium Slate Gray */
         }
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Fixed Navigation Header */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--gold-primary);
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        /* Main Container */
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px;
         }
-        header {
+
+        /* Hero Section */
+        .hero {
             text-align: center;
-            margin-bottom: 40px;
+            padding: 60px 20px;
+            border-bottom: 1px solid var(--border-color);
         }
-        h1 { font-size: 2.5rem; margin-bottom: 10px; color: var(--accent); }
-        .contact-info { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; }
-        .objective { background: var(--card-bg); padding: 20px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 30px; }
-        section { margin-bottom: 30px; }
-        h2 { border-bottom: 2px solid var(--border); padding-bottom: 8px; color: var(--accent); }
-        .card { background: var(--card-bg); padding: 20px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 15px; }
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .skill-item { background: var(--card-bg); padding: 12px; border-radius: 6px; border: 1px solid var(--border); }
-        ul { padding-left: 20px; }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: var(--gold-primary);
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .contact-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .contact-bar span {
+            color: var(--gold-primary);
+        }
+
+        /* Section Formatting */
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--gold-primary);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Card Styling */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: var(--gold-muted);
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .card .date {
+            color: var(--gold-primary);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .card ul {
+            list-style-type: square;
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+
+        .card li {
+            margin-bottom: 8px;
+        }
+
+        /* Skill Pill Tags */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-badge {
+            background: #1c1c1e;
+            color: var(--gold-accent);
+            border: 1px solid var(--gold-muted);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Reference Box */
+        .reference-box {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .reference-box strong {
+            color: var(--gold-primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Sticky Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">ORATILE SAANE</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#skills">Skills</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Hero Section -->
     <div class="container">
-        <header>
-            <h1>Oratile Saane</h1>
-            <p class="objective">Aspiring Backend Developer & IT Graduate</p>
-            <div class="contact-info">
-                📍 Pretoria North, 0182 | 📞 072 988 4549 | ✉️ oratilesaanego@gmail.com
+        <header class="hero" id="about">
+            <h1>Hi, I'm <span>Oratile Saane</span></h1>
+            <p class="subtitle">Information Technology Graduate & Aspiring Backend Developer</p>
+            <div class="contact-bar">
+                <div>📍 Pretoria North, SA</div>
+                <div>📞 <span>072 988 4549</span></div>
+                <div>✉️ <span>oratilesaanego@gmail.com</span></div>
             </div>
         </header>
 
-        <section class="objective">
-            <h2>Objective</h2>
-            <p>Recent Information Technology graduate with strong foundational knowledge in computer systems, networking, troubleshooting, and software development. Eager to apply technical and problem-solving skills in a professional environment, with a strong focus on growing into a backend developer role.</p>
-        </section>
-
+        <!-- Objective / Summary Section -->
         <section>
-            <h2>Experience</h2>
+            <h2 class="section-title">Career Objective</h2>
             <div class="card">
-                <h3>Technical Support — Insika Foundation</h3>
-                <p><em>01-08-2024 – 30-06-2026</em>[cite: 2]</p>
-                <ul>
-                    <li>Troubleshot technical issues and assisted users with software and hardware problems across phone, email, and chat[cite: 2].</li>
-                    <li>Assisted in implementing new technologies/applications and trained users during transitions[cite: 2].</li>
-                    <li>Collaborated with a team of developers to build and maintain features for a web-based application using JavaScript, React, and Node.js[cite: 2].</li>
-                </ul>
-                <p><strong>Manager Reference:</strong> Siyaduduzwa Dlamini (Siyadu@insikafoundation.co.za | +27 72 021 2074)[cite: 2]</p>
+                <p style="color: var(--text-muted);">
+                    Recent Information Technology graduate with strong foundational knowledge in computer systems, networking, troubleshooting, and software development. Eager to apply technical and problem-solving skills in a professional environment while actively growing into a specialized backend developer role.
+                </p>
             </div>
         </section>
 
-        <section>
-            <h2>Education & Qualifications</h2>
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">Work Experience</h2>
             <div class="card">
+                <h3>Technical Support Specialist</h3>
+                <div class="date">Insika Foundation | Aug 2024 – Jun 2026</div>
                 <ul>
-                    <li><strong>BSc Honours in Information Technology</strong> — Richfield Graduate Institute of Technology (2026)[cite: 2]</li>
-                    <li><strong>Networking Essentials</strong> — Cisco Networking Academy (2026)[cite: 2]</li>
-                    <li><strong>Bachelor's Degree in Information Technology</strong> — Richfield Graduate Institute of Technology (2024)[cite: 2]</li>
-                    <li><strong>Diploma in Information Technology</strong> — Richfield Graduate Institute of Technology (2023)[cite: 2]</li>
+                    <li>Troubleshot technical issues, providing reliable resolution for software and hardware problems via phone, email, and chat.</li>
+                    <li>Supported the rollout of new applications and provided end-user training during technology transitions.</li>
+                    <li>Collaborated with a developer team to build and maintain features for a web-based application using JavaScript, React, and Node.js.</li>
                 </ul>
+                <div class="reference-box">
+                    <strong>Reference:</strong> Siyaduduzwa Dlamini (IT Manager) &bull; Siyadu@insikafoundation.co.za &bull; +27 72 021 2074
+                </div>
             </div>
         </section>
 
-        <section>
-            <h2>Technical & Soft Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item"><strong>Programming:</strong> Java, C#, JavaScript, React, Node.js, HTML/CSS</div>
-                <div class="skill-item"><strong>Systems & Networking:</strong> Networking Essentials, Troubleshooting, Hardware & Printer Setup</div>
-                <div class="skill-item"><strong>Platforms:</strong> WordPress</div>
-                <div class="skill-item"><strong>Soft Skills:</strong> Communication, Analytical Thinking, Adaptability</div>
+        <!-- Education Section -->
+        <section id="education">
+            <h2 class="section-title">Education & Credentials</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>BSc Honours in Information Technology</h3>
+                    <div class="date">Richfield Graduate Institute of Technology (2026)</div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Advanced study in software architectures, systems design, and research methodologies.</p>
+                </div>
+                <div class="card">
+                    <h3>Networking Essentials</h3>
+                    <div class="date">Cisco Networking Academy (2026)</div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Core understanding of network architecture, protocols, routing, and troubleshooting.</p>
+                </div>
+                <div class="card">
+                    <h3>Bachelor's Degree in IT</h3>
+                    <div class="date">Richfield Graduate Institute of Technology (2024)</div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Comprehensive background in software engineering, database principles, and IT systems.</p>
+                </div>
+                <div class="card">
+                    <h3>Diploma in Information Technology</h3>
+                    <div class="date">Richfield Graduate Institute of Technology (2023)</div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Foundational training in computer systems, programming logic, and technical support.</p>
+                </div>
             </div>
         </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Technical & Soft Skills</h2>
+            <div class="card">
+                <h4 style="color: var(--text-main); margin-bottom: 15px;">Programming & Web</h4>
+                <div class="skills-container" style="margin-bottom: 25px;">
+                    <span class="skill-badge">Node.js</span>
+                    <span class="skill-badge">JavaScript</span>
+                    <span class="skill-badge">Java</span>
+                    <span class="skill-badge">C#</span>
+                    <span class="skill-badge">React</span>
+                    <span class="skill-badge">HTML/CSS</span>
+                    <span class="skill-badge">WordPress</span>
+                </div>
+
+                <h4 style="color: var(--text-main); margin-bottom: 15px;">Systems & Infrastructure</h4>
+                <div class="skills-container" style="margin-bottom: 25px;">
+                    <span class="skill-badge">Networking Essentials</span>
+                    <span class="skill-badge">Hardware Diagnostics</span>
+                    <span class="skill-badge">System Troubleshooting</span>
+                    <span class="skill-badge">Printer Configuration</span>
+                </div>
+
+                <h4 style="color: var(--text-main); margin-bottom: 15px;">Professional Strengths</h4>
+                <div class="skills-container">
+                    <span class="skill-badge">Analytical Thinking</span>
+                    <span class="skill-badge">Adaptability</span>
+                    <span class="skill-badge">Technical Communication</span>
+                    <span class="skill-badge">User Support</span>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Oratile Saane. Built with HTML & CSS.</p>
+        </footer>
     </div>
 </body>
 </html>
